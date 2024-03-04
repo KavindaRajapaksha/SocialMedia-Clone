@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:instergram_clone/resposive/mobileScreenLayout.dart';
+import 'package:instergram_clone/resposive/resposive.dart';
+import 'package:instergram_clone/resposive/webScreenLayout.dart';
 import 'package:instergram_clone/utils/colors.dart';
 
 void main() {
@@ -16,7 +19,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: mobileBackgroundColor,
       ),
-      home: const Scaffold(body: Text('Instergram Clone')),
+      home: const ResposiveLayout(
+        mobileScreenLayout: MobileScreenLayout(),
+        webScreenLayout: WebScreenLayout(),
+      ),
     );
   }
 }
