@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instergram_clone/resources/auth_methods.dart';
 import 'package:instergram_clone/screens/login_screen.dart';
 import 'package:instergram_clone/utils/colors.dart';
 import 'package:instergram_clone/widgets/text_field_input.dart';
@@ -17,6 +18,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -109,7 +111,15 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
               //button login
               InkWell(
-                onTap: () {},
+                onTap: () async {
+                  String res = await AuthMethods().signUpUser(
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                    username: _usernameController.text,
+                    bio: _bioController.text,
+                  );
+                  print(res);
+                },
                 child: Container(
                   child: const Text('Sign up'),
                   width: double.infinity,
